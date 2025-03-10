@@ -75,6 +75,19 @@
             scrollContainerDiv.style.top = `${(1 - currentPage) * window.innerHeight}px`
         }
     })
+    let oldTouchY
+    window.addEventListener('touchstart', e => oldTouchY = e.targetTouches[0].clientY)
+    window.addEventListener('touchmove', (e) => {
+        const deltaY = e.targetTouches[0].clientY - oldTouchY
+        oldTouchY = e.targetTouches[0].clientY
+        if (deltaY < 0 && currentPage < totalPage) {
+            currentPage++
+            scrollContainerDiv.style.top = `${(1 - currentPage) * window.innerHeight}px`
+        } else if (deltaY > 0 && currentPage > 1) {
+            currentPage--
+            scrollContainerDiv.style.top = `${(1 - currentPage) * window.innerHeight}px`
+        }
+    })
     const pageSelect = backgroundDiv.querySelector('#pageSelect')
     const more = pageSelect.querySelector('#more')
     more.addEventListener('mouseup', () => {
