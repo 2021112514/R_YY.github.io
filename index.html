@@ -78,6 +78,7 @@
     let oldTouchY
     window.addEventListener('touchstart', e => oldTouchY = e.targetTouches[0].clientY)
     window.addEventListener('touchmove', (e) => {
+        e.preventDefault()
         const deltaY = e.targetTouches[0].clientY - oldTouchY
         oldTouchY = e.targetTouches[0].clientY
         if (deltaY < 0 && currentPage < totalPage) {
