@@ -25,18 +25,31 @@
     mainDiv.style.width = window.innerWidth
     const messages = [
         {
-            title: '-你是谁',
+            title: '- 你是谁',
             info: '- 我是RYY，一名前端爱好者'
+        },
+        {
+            title: '- 学历？',
+            info: '- 本科在读'
+        },
+        {
+            title: '- 爱好？',
+            info: '- 游戏<a href="https://store.steampowered.com/app/2230650/TEVI/" style="margin-left: 5px; margin-right: 5px">TEVI</a>' + 
+            '<a href="https://store.steampowered.com/app/1188930/_/" style="margin-left: 5px; margin-right: 5px">超舟</a>等' +
+            '<br>- Coding'
+        },
+        {
+            title: '- 技术栈？',
+            info: '- Java Python MySQL HTML CSS JavaScript TypeScript'
         }
     ]
     const content = document.getElementById('messageTemplate').content
-    
     messages.forEach(msg => {
         const clone = content.cloneNode(true)
         const title = clone.querySelector('#title')
         const info = clone.querySelector('#info')
         title.textContent += msg.title
-        info.textContent += msg.info
+        info.innerHTML += msg.info
         centerDiv.appendChild(clone)
     })
 </script>
